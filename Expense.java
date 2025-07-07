@@ -25,5 +25,4 @@ class Expense{
         return category;
     }
 
-    
 }
