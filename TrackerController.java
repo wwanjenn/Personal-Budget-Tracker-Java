@@ -3,7 +3,7 @@ class TrackerController {
     private Income incomeModel;
     private  TrackerView trackerView;
 
-    public TrackerController(expenseModel, incomeModel, trackerView){
+    public TrackerController(Expense expenseModel, Income incomeModel, TrackerView trackerView){
         this.expenseModel = expenseModel;
         this.incomeModel = incomeModel;
         this.trackerView = trackerView;
