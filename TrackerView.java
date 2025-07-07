@@ -3,10 +3,9 @@ import javax.swing.*;
 public class TrackerView extends JFrame{
     private JTextField nameField;
     private JTextField amountField;
-    private JComboBox<ExpenseCategory> expenseBox;
-    private JComboBox<IncomeCategory> incomeBox;
+    private JComboBox<Object> categoryBox;
     private JComboBox<String> typeBox;
-    private JButton sumbitButton;
+    private JButton submitButton;
 
     public TrackerView(){
         setTitle("Personal Budget Tracker");
@@ -20,9 +19,25 @@ public class TrackerView extends JFrame{
         amountField = new JTextField();
 
         typeBox = new JComboBox<>(new String[]{"Expense", "Income"});
+        typeBox.setSelectedIndex(0);
 
-        expenseBox = new JComboBox<>(ExpenseCategory.values());
-        incomeBox = new JComboBox<>(IncomeCategory.values());
+        categoryBox = new JComboBox<>();
+
+        typeBox.addActionListener(e -> {
+            String selectedType = (String) typeBox.getSelectedItem();
+            categoryBox.removeAllItems();
+            if(selectedType.equals("Income")){
+                for(IncomeCategory c: IncomeCategory.values()){
+                    categoryBox.addItem(c);
+                }
+            } else {
+                for(ExpenseCategory c: ExpenseCategory.values()){
+                    categoryBox.addItem(c);
+                }
+            }
+        }); 
+
+        submitButton = new JButton("Submit");
 
         formPanel.add(new JLabel("Name: "));
         formPanel.add(nameField);
@@ -33,14 +48,11 @@ public class TrackerView extends JFrame{
         formPanel.add(new JLabel("Type: "));
         formPanel.add(typeBox);
 
-        formPanel.add(new JLabel("Expense Category: "));
-        formPanel.add(expenseBox);
-
-        formPanel.add(new JLabel("Income Category: "));
-        formPanel.add(incomeBox);
+        formPanel.add(new JLabel("Category: "));
+        formPanel.add(categoryBox);
         
         formPanel.add(new JLabel(""));
-        formPanel.add(sumbitButton);
+        formPanel.add(submitButton);
 
         add(formPanel);
 
@@ -48,4 +60,24 @@ public class TrackerView extends JFrame{
 
     }
 
+    
+    public String getNameInput(){
+        return nameField.getText();
+    }
+
+    public int getAmountInput(){
+        return Integer.parseInt(amountField.getText());
+    }
+
+    public Object getExpenseIncomeCategory(){
+        return (Object) categoryBox.getSelectedItem();
+    }
+
+    public String getTypeCategory(){
+        return (String )typeBox.getSelectedItem();
+    }
+
+    public JButton getSubmitButton(){
+        return submitButton;
+    }
 }
