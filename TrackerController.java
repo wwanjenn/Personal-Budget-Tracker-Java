@@ -24,6 +24,8 @@ class TrackerController {
             }
 
             System.out.println("Entry added: " + name + " - " + amount + " - " + category);
+            String display = String.format("[%s] %s - ₱%d - %s", type, name, amount, category);
+            view.addEntriesDisplay(display);
         });
 
     }
