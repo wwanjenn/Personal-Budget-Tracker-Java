@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.GridLayout;
+import java.awt.GridLayout; 
 
 public class TrackerView extends JFrame{
     private JTextField nameField;
