@@ -3,6 +3,7 @@ import javax.swing.border.Border;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout; 
 
 public class TrackerView extends JFrame{
@@ -21,7 +22,9 @@ public class TrackerView extends JFrame{
 
         entriesPanel = new JPanel();
         entriesPanel.setLayout(new BoxLayout(entriesPanel, BoxLayout.Y_AXIS));
-        add(entriesPanel, BorderLayout.NORTH);
+        JScrollPane scrollPane = new JScrollPane(entriesPanel);
+        scrollPane.setPreferredSize(new Dimension(1080, 200));
+        add(scrollPane, BorderLayout.NORTH);
 
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(5, 2, 10, 10));
