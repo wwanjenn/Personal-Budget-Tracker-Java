@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+import java.awt.BorderLayout;
 import java.awt.GridLayout; 
 
 public class TrackerView extends JFrame{
@@ -7,11 +9,17 @@ public class TrackerView extends JFrame{
     private JComboBox<Object> categoryBox;
     private JComboBox<String> typeBox;
     private JButton submitButton;
+    private JPanel entriesPanel;
 
     public TrackerView(){
         setTitle("Personal Budget Tracker");
         setSize(1080, 720);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        entriesPanel = new JPanel();
+        entriesPanel.setLayout(new BoxLayout(entriesPanel, BoxLayout.Y_AXIS));
+        add(entriesPanel, BorderLayout.NORTH);
 
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(5, 2, 10, 10));
@@ -61,7 +69,6 @@ public class TrackerView extends JFrame{
 
     }
 
-    
     public String getNameInput(){
         return nameField.getText();
     }
