@@ -1,6 +1,8 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout; 
 
 public class TrackerView extends JFrame{
@@ -66,6 +68,17 @@ public class TrackerView extends JFrame{
         add(formPanel);
 
         setVisible(true);
+
+    }
+
+    public void addEntriesDisplay(String displayText){
+        JPanel card = new JPanel();
+        card.setLayout(new BorderLayout());
+        card.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        card.add(new JLabel(displayText), BorderLayout.CENTER);
+        entriesPanel.add(card);
+        entriesPanel.revalidate();
+        entriesPanel.repaint();
 
     }
 
