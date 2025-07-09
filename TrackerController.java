@@ -36,7 +36,11 @@ class TrackerController {
                 if (filterType.equals("All")
                     || filterType.equals("Income") && entry instanceof Income
                     || filterType.equals("Expense") && entry instanceof Expense){
-                        
+                        String display = (entry instanceof Income)
+                            ? formatIncome((Income) entry)
+                            : formatExpense((Expense) entry);
+
+                        view.addEntriesDisplay(display);
                     }
             }
         });
