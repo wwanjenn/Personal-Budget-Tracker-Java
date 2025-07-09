@@ -13,6 +13,8 @@ public class TrackerView extends JFrame{
     private JComboBox<String> typeBox;
     private JButton submitButton;
     private JPanel entriesPanel;
+    private JComboBox<String> filterTypeBox;
+    private JButton filterButton;
 
     public TrackerView(){
         setTitle("Personal Budget Tracker");
@@ -28,6 +30,15 @@ public class TrackerView extends JFrame{
 
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(5, 2, 10, 10));
+
+        filterTypeBox = new JComboBox<>(new String[]{"All", "Expense", "Income"});
+        filterButton = new JButton("Filter");
+
+        JPanel filterPanel = new JPanel();
+        filterPanel.add(new JLabel("Filter by Type: "));
+        filterPanel.add(filterTypeBox);
+        filterPanel.add(filterButton);
+        add(filterPanel, BorderLayout.SOUTH);
 
         nameField = new JTextField();
         amountField = new JTextField();
@@ -83,6 +94,14 @@ public class TrackerView extends JFrame{
         entriesPanel.revalidate();
         entriesPanel.repaint();
 
+    }
+
+    public String getFilterType(){
+        return (String) filterTypeBox.getSelectedItem();
+    }
+
+    public JButton getFilterButton(){
+        return filterButton;
     }
 
     public String getNameInput(){
