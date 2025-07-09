@@ -42,6 +42,14 @@ class TrackerController {
         });
     }
 
+    public String formatIncome(Income i){
+        String display = String.format("[Income] %s - ₱%d - %s", i.getName(), i.getAmount(), i.getCategory());
+        return display;
+    }
 
+    public String formatExpense(Expense e){
+        String display = String.format("[Expense] %s - ₱%d - %s", e.getName(), e.getAmount(), e.getCategory());
+        return display;
+    }
         
 }
