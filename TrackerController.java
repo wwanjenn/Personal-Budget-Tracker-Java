@@ -28,7 +28,20 @@ class TrackerController {
             view.addEntriesDisplay(display);
         });
 
+        view.getFilterButton().addActionListener(e -> {
+            String filterType = view.getFilterType();
+            view.clearEntriesDisplay();
+
+            for(Object entry : entries){
+                if (filterType.equals("All")
+                    || filterType.equals("Income") && entry instanceof Income
+                    || filterType.equals("Expense") && entry instanceof Expense){
+                        
+                    }
+            }
+        });
     }
+
 
         
 }
