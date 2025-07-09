@@ -93,7 +93,12 @@ public class TrackerView extends JFrame{
         entriesPanel.add(card);
         entriesPanel.revalidate();
         entriesPanel.repaint();
+    }
 
+    public void clearEntriesDisplay(){
+        entriesPanel.removeAll();
+        entriesPanel.revalidate();
+        entriesPanel.repaint();
     }
 
     public String getFilterType(){
